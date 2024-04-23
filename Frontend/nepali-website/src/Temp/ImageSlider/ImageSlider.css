@@ -1,0 +1,33 @@
+.image-slider {
+    position: relative;
+    width: 80vw; /* Adjust width as needed */
+    max-width: 100%; /* Ensure the slider doesn't exceed the viewport width */
+    margin: 0 auto; /* Center the slider horizontally */
+  }
+  
+  .slider-controls {
+    position: absolute;
+    top: 50%;
+    display: flex;
+    transform: translateY(-50%);
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .prev-button,
+  .next-button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+  }
+  
+  .prev-button {
+    left: 0;
+  }
+  
+  .next-button {
+    right: 0;
+  }
+  

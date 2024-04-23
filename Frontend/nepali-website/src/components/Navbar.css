@@ -1,11 +1,26 @@
 .navbar {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content:space-between;
     background: rgb(8, 78, 83);
     padding: 10px;
     height: 80px;
   }
+  
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  ul li {
+    display: inline-block;
+    margin: 0 20px;
+    color: white;
+    font-size: larger;
+    text-decoration: none;
+  }
+
   
   .left {
     flex: 1;
@@ -24,51 +39,28 @@
   
   .logo {
     color: white;
-    font-size: 24px;
+    font-size: 10px;
     text-decoration: none;
+    width: 12rem;
+    height: 8rem;
+    margin-left: 2rem ;
   }
-  
-  ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  ul li {
-    display: inline-block;
-    margin: 0 20px;
-  }
-  
-  ul li a {
+
+  .fas{
     color: white;
-    text-decoration: none;
+    font-size: 2rem;
   }
-  
-  .search-box {
-    display: flex;
+
+  .cart-container {
+    margin-right: 4rem;
     align-items: center;
-    background: rgb(95, 92, 92);
-    border-radius: 25px;
-    padding: 5px 10px;
   }
-  
-  .search-box input {
-    padding: 6px;
-    background: transparent;
-    border: 0;
-    outline: 0;
-    color: white;
-    font-size: 18px;
-    max-width: 200px;
-  }
-  
-  .search-box input::placeholder {
-    color: white;
-  }
-  
-  .search-box button {
-    background-color: transparent;
-    border: none;
-    color: white;
-    cursor: pointer;
-    margin-left: 5px;
+
+  .login-btn {
+    position: relative;
+    font-size: larger;
+    margin-right: 2rem;
+    align-items: center;
+    padding: 0rem 1rem;
+    padding-top: 4px;
   }

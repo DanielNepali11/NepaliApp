@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './RegisterPage.css';
 import { FaArrowLeft } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const RegisterPage = () => {
   const [firstName, setFirstName] = useState('');
@@ -11,8 +12,19 @@ const RegisterPage = () => {
 
   const handleRegister = (e) => {
     e.preventDefault();
-    // Handle registration logic here
-    console.log('Registration form submitted');
+    const userInfo = {
+      "firstname" : firstName,
+      "lastname" : lastName,
+      "email" : email,
+      "password" : password
+    }
+    axios.post('http://localhost:8080/user/add', userInfo)
+    .then(response => {
+      console.log(response.data);
+    })
+    .catch(error => {
+      console.error('Error: ', error);
+    })
   };
 
   return (
@@ -20,7 +32,7 @@ const RegisterPage = () => {
       <div className="register-container">
         <div className="register-form">
         <div className="back-icon">
-        <Link to="/"><FaArrowLeft /></Link>
+        <Link to="/login"><FaArrowLeft /></Link>
       </div>
           <h2>Register</h2>
           <form onSubmit={handleRegister}>

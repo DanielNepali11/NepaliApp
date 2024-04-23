@@ -2,13 +2,25 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom';
 import "./LoginPage.css"; // Import the CSS file
+import axios from 'axios';
 
 const LoginPage = () => {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = () => {
-    // Implement your login logic here
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const userInfo = {
+      'email' : email,
+      'password' : password
+    }
+    axios.post('http://localhost:8080/user/login', userInfo)
+    .then(response => {
+      console.log(response.data.status);
+    })
+    .catch(error => {
+      console.error('Error: ', error);
+    })
   };
 
   return (
@@ -16,13 +28,13 @@ const LoginPage = () => {
       <div className="login-container">
         <div className="login-form">
           <h2>Login</h2>
-          <form onSubmit={handleLogin}>
+          <form>
             <div>
               <label>Email:</label>
               <input
                 type="email"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div>
@@ -33,7 +45,7 @@ const LoginPage = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            <button type="submit">Login</button>
+            <button onClick={handleLogin}>Login</button>
           </form>
           <div>
             Don't have an account? <Link to="/register">Register now</Link>
