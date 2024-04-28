@@ -19,7 +19,12 @@ const Offers = () => {
         <h1>Exclusive</h1>
         <h1>Offers For You</h1>
         <p>ONLY ON BEST SELLERS PRODUCTS</p>
-        <button>Check Now</button>
+        <div className="offer-latest-btn">
+          <div>
+            Check Now
+            <i className="fas fa-arrow-right"></i>
+          </div>
+        </div>
       </div>
       <div className="offers-right">
       {image && <img src={image} alt="" />}

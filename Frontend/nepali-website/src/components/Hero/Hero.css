@@ -36,7 +36,7 @@
 
 }
 
-.hero-hand-icon i{
+.hero-hand-icon img{
     width: 105px;
 }
 
@@ -59,6 +59,11 @@
 .hero-latest-btn i{
     margin-left: 20px;
     font-size: 20px;
+}
+
+.hero-latest-btn i:hover {
+    transform: scale(1.8);
+    transition: 0.6s;
 }
 
 .hero-right {

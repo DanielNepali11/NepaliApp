@@ -1,6 +1,7 @@
 import React from "react";
 import fashionImage from "../../assets/fashion-image.png";
 import "./Hero.css";
+import handIcon from '../../assets/hand_icon.png';
 
 const Hero = () => {
   return (
@@ -10,7 +11,7 @@ const Hero = () => {
         <div>
           <div className="hero-hand-icon">
             <p>Your</p>
-           <i className="fas fa-hand-rock"></i>
+           <img src={handIcon} alt=""/>
           </div>
           <p>Wardrobe's</p>
           <p>Next obsession.</p>

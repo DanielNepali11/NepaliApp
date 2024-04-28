@@ -17,21 +17,21 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping(path="/add")
-    public String savePlayer(@RequestBody UserDTO userDTO){
+    @PostMapping(path = "/add")
+    public String savePlayer(@RequestBody UserDTO userDTO) {
         userService.saveUser(userDTO);
         return "User has been added";
     }
 
     @DeleteMapping("/delete/{id}")
-    public String deletePlayer(@PathVariable int id){
+    public String deletePlayer(@PathVariable int id) {
         userService.deleteUser(id);
         return "User deleted successfully.";
     }
 
-    @PostMapping(path="/login")
-    public ResponseEntity<?> loginEmployee(@RequestBody LoginDTO loginDTO){
-        LoginResponse loginResponse= userService.loginUser(loginDTO);
+    @PostMapping(path = "/login")
+    public ResponseEntity<?> loginEmployee(@RequestBody LoginDTO loginDTO) {
+        LoginResponse loginResponse = userService.loginUser(loginDTO);
         return ResponseEntity.ok(loginResponse);
 
     }

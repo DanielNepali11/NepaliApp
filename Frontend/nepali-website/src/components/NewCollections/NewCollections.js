@@ -1,15 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./NewCollections.css";
-import new_collection from "../../assets/new_collections";
 import Item from "../Item/Item";
+import axios from "axios";
 
 const NewCollections = () => {
+  const [newCollection, setNewCollection] = useState([]);
+
+  useEffect(() => {
+    const fetchNewCollection = async () => {
+      try {
+        const response = await axios.get("http://localhost:8080/product/newCollections");
+        const data = response.data;
+        setNewCollection(data);
+      } catch (error) {
+        console.error("Error fetching new collections:", error);
+      }
+    };
+    fetchNewCollection();
+  }, []);
   return (
     <div className="new-collections">
       <h1>NEW COLLECTIONS</h1>
       <hr />
       <div className="collections">
-        {new_collection.map((item, i) => {
+        {newCollection.map((item, i) => {
           return (
             <Item
               key={i}
