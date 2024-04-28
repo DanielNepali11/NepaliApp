@@ -1,7 +1,8 @@
 .hero {
     height: 100vh;
-    background: linear-gradient(180deg, #f7cdf8,#c0c0c0 60%);
+    background: linear-gradient(180deg, #f7cdf8, #FDFBFB 60%);
     display: flex;
+    margin-bottom: 40px;
 }
 
 .hero-left{
@@ -52,6 +53,7 @@
     color: white;
     font-size: 22px;
     font-weight: 500;
+    cursor: pointer;
 }
 
 .hero-latest-btn i{
