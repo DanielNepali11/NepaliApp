@@ -8,38 +8,44 @@ import Cart from "./pages/Cart";
 import LoginPage from "./components/LoginPage/LoginPage";
 import RegisterPage from "./components/RegisterPage/RegisterPage";
 import Navbar from "./components/Navbar/Navbar";
+import { AuthProvider } from "./components/UserAuthentication/useAuth";
+import mens_banner from "./assets/banner_mens.png";
+import womens_banner from "./assets/banner_women.png";
+import kids_banner from "./assets/banner_kids.png";
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Navbar />
-        <Routes>
-          <Route exact path="/" element={<Shop />} />
-          <Route
-            exact
-            path="/mens"
-            element={<ShopCategory category="mens" />}
-          />
-          <Route
-            exact
-            path="/womens"
-            element={<ShopCategory category="womens" />}
-          />
-          <Route
-            exact
-            path="/kids"
-            element={<ShopCategory category="kids" />}
-          />
-          <Route exact path="/product" element={<Product />}>
-            <Route path=":productId" element={<Product />} />
-          </Route>
-          <Route exact path="/cart" element={<Cart />} />
-          <Route exact path="/login" element={<LoginPage />} />
-          <Route exact path="/register" element={<RegisterPage />} />
-        </Routes>
-      </div>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <div className="App">
+          <Navbar />
+          <Routes>
+            <Route exact path="/" element={<Shop />} />
+            <Route
+              exact
+              path="/mens"
+              element={<ShopCategory banner={mens_banner} category="men" />}
+            />
+            <Route
+              exact
+              path="/womens"
+              element={<ShopCategory banner={womens_banner} category="women" />}
+            />
+            <Route
+              exact
+              path="/kids"
+              element={<ShopCategory banner={kids_banner} category="kid" />}
+            />
+            <Route exact path="/product" element={<Product />}>
+              <Route path=":productId" element={<Product />} />
+            </Route>
+            <Route exact path="/cart" element={<Cart />} />
+            <Route exact path="/login" element={<LoginPage />} />
+            <Route exact path="/register" element={<RegisterPage />} />
+          </Routes>
+        </div>
+      </Router>
+    </AuthProvider>
   );
 }
 

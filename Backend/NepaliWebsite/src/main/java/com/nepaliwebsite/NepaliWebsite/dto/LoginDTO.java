@@ -1,8 +1,19 @@
 package com.nepaliwebsite.NepaliWebsite.dto;
 
+
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+
 public class LoginDTO {
 
+    @NotNull
+    @NotEmpty
+    @Email
     private String email;
+
+    @NotNull
+    @NotEmpty
     private String password;
 
     public LoginDTO(String password, String email) {

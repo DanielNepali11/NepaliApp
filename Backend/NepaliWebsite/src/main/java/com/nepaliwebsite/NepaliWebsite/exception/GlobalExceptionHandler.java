@@ -12,10 +12,10 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<Object> handleIllegalArgumentException(IllegalArgumentException ex) {
-        // Create a custom error response body
-        ErrorResponse errorResponse = new ErrorResponse(HttpStatus.BAD_REQUEST, ex.getMessage());
-        // Return ResponseEntity with the custom error response body and HTTP status code
-        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+        // Create a custom error response message
+        String errorMessage = ex.getMessage();
+        // Return ResponseEntity with the custom error response message and HTTP status code
+        return new ResponseEntity<>(errorMessage, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(ConstraintViolationException.class)

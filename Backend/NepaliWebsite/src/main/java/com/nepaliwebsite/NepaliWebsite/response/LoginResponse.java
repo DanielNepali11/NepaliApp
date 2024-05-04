@@ -1,15 +1,25 @@
 package com.nepaliwebsite.NepaliWebsite.response;
 
 public class LoginResponse {
+    String username;
     String message;
     Boolean status;
 
-    public LoginResponse(String message, Boolean status) {
+    public LoginResponse(String username, String message, Boolean status) {
+        this.username = username;
         this.message = message;
         this.status = status;
     }
 
     public LoginResponse() {
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getMessage() {
@@ -31,7 +41,8 @@ public class LoginResponse {
     @Override
     public String toString() {
         return "LoginResponse{" +
-                "message='" + message + '\'' +
+                "username='" + username + '\'' +
+                ", message='" + message + '\'' +
                 ", status=" + status +
                 '}';
     }

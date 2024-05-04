@@ -4,6 +4,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class User {
@@ -12,12 +15,18 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+    @NotNull
+    @NotEmpty
     private String firstName;
-
+    @NotNull
+    @NotEmpty
     private String lastName;
-
+    @NotNull
+    @NotEmpty
+    @Email
     private String email;
-
+    @NotNull
+    @NotEmpty
     private String password;
 
     public User(String firstName, String lastName, String email, String password) {
