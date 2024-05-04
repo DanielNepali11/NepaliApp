@@ -56,6 +56,22 @@
     align-items: center;
   }
 
+  .cart-container i{
+    font-size: 1.5rem;
+  }
+
+  .logged-in-user{
+    display: flex;
+  }
+
+
+  .logged-in-user p {
+    color: white;
+    font-size: large;
+    margin-left: 1rem;
+    margin-right: 2rem;
+  }
+
   .login-btn {
     position: relative;
     font-size: larger;
@@ -63,4 +79,12 @@
     align-items: center;
     padding: 0rem 1rem;
     padding-top: 4px;
+  }
+
+  .logout-btn {
+    position: relative;
+    font-size: larger;
+    align-items: center;
+    padding: 0rem 1rem;
+    margin-left: 2rem;
   }

@@ -1,0 +1,14 @@
+.category-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-content: space-evenly;
+    margin-top: 50px;
+    gap:60px;
+}
+
+.category-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}

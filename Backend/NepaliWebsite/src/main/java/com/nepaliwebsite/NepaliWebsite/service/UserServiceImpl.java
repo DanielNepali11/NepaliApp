@@ -40,23 +40,24 @@ public class UserServiceImpl implements UserService {
     @Override
     public LoginResponse loginUser(LoginDTO loginDTO) {
         String message = "";
-        User user = userRepository.findByEmail(loginDTO.getEmail());
-        if (user != null) {
+        Optional<User> userOptional = userRepository.findByEmail(loginDTO.getEmail());
+        if (userOptional.isPresent()) {
             String password = loginDTO.getPassword();
+            User user = userOptional.get();
             String encodedPassword = user.getPassword();
             boolean isPasswordCorrect = passwordEncoder.matches(password, encodedPassword);
             if (isPasswordCorrect) {
                 Optional<User> checkUser = userRepository.findUserByEmailAndPassword(loginDTO.getEmail(), encodedPassword);
                 if (checkUser.isPresent()) {
-                    return new LoginResponse("Login Success", true);
+                    return new LoginResponse(user.getFirstName(), "Login Success", true );
                 } else {
-                    return new LoginResponse("Login Failed", false);
+                    return new LoginResponse("","Login Failed", false);
                 }
             } else {
-                return new LoginResponse("Password donot match.", false);
+                return new LoginResponse("","Password donot match.", false);
             }
         } else {
-            return new LoginResponse("Email doesnot exist", false);
+            return new LoginResponse("","Email doesnot exist", false);
         }
     }
 }

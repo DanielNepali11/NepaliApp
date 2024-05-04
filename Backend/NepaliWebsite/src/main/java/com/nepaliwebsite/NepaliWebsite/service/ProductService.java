@@ -1,6 +1,7 @@
 package com.nepaliwebsite.NepaliWebsite.service;
 
 import com.nepaliwebsite.NepaliWebsite.model.Product;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.parameters.P;
 
 import java.util.List;
@@ -16,4 +17,6 @@ public interface ProductService {
     public List<Product> getPopularProducts();
 
     public List<Product> getNewCollections();
+
+    public ResponseEntity<List<Product>> getByCategory(String category);
 }

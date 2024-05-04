@@ -3,6 +3,7 @@ package com.nepaliwebsite.NepaliWebsite.controller;
 import com.nepaliwebsite.NepaliWebsite.model.Product;
 import com.nepaliwebsite.NepaliWebsite.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -41,5 +42,10 @@ public class ProductController {
     @GetMapping(path="/newCollections")
     public List<Product> getNewCollections(){
         return productService.getNewCollections();
+    }
+
+    @GetMapping(path = "/category/{category}")
+    public ResponseEntity<List<Product>> getProductsByCategory(@PathVariable String category){
+        return productService.getByCategory(category);
     }
 }

@@ -4,6 +4,8 @@ import com.nepaliwebsite.NepaliWebsite.exception.ResourceNotFoundException;
 import com.nepaliwebsite.NepaliWebsite.model.Product;
 import com.nepaliwebsite.NepaliWebsite.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -49,5 +51,15 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> getNewCollections() {
         return productRepository.findNewCollections();
+    }
+
+    @Override
+    public ResponseEntity<List<Product>> getByCategory(String category) {
+        List<Product> productListsByCategory = productRepository.findByCategory(category);
+        if(productListsByCategory.isEmpty()){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        } else {
+            return ResponseEntity.ok(productListsByCategory);
+        }
     }
 }
