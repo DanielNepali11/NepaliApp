@@ -3,10 +3,20 @@ import "./Navbar.css";
 import Logo from "../../assets/nepali-website-logo.png";
 import { Link } from "react-router-dom";
 import { useAuth } from "../UserAuthentication/useAuth";
+import LoginPage from "../LoginPage/LoginPage";
+import RegisterPage from "../RegisterPage/RegisterPage"
 
 const Navbar = () => {
   const [menu, setMenu] = useState("shop");
   const { username, isLoggedIn, clearUserSession } = useAuth();
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+  const toggleLoginModal = () => {
+    setIsLoginModalOpen(!isLoginModalOpen);
+  };
+  const toggleRegisterModal = () => {
+    setIsRegisterModalOpen(!isRegisterModalOpen);
+  };
   return (
     <div className="navbar">
       <img src={Logo} alt="" className="logo" />
@@ -63,14 +73,16 @@ const Navbar = () => {
           </div>
         ) : (
           <div>
-            <Link to="/login">
-              <button type="submit" className="login-btn">
+              <button className="login-btn" onClick={toggleLoginModal}>
                 Login
               </button>
-            </Link>
           </div>
         )}
       </div>
+      {isLoginModalOpen && (
+        <LoginPage closeModal={toggleLoginModal} registerModal={toggleRegisterModal} closeLoginModal={toggleLoginModal} />
+      )}
+      {isRegisterModalOpen && <RegisterPage closeModal={toggleRegisterModal} loginModal={toggleLoginModal} />}
     </div>
   );
 };

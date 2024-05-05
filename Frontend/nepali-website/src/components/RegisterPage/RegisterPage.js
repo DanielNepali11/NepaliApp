@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 import "./RegisterPage.css";
 import { FaArrowLeft } from "react-icons/fa";
-import { Link } from "react-router-dom";
 import axios from "axios";
 
-const RegisterPage = () => {
+const RegisterPage = ({ closeModal, loginModal }) => {
   const [responseMessage, setResponseMessage] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const handleBackClick = () => {
+    closeModal();
+    loginModal();
+  };
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -19,7 +23,7 @@ const RegisterPage = () => {
       email === "" ||
       password === ""
     ) {
-      setResponseMessage("Fields can't be emptty.");
+      setResponseMessage("Fields can't be empty.");
     } else {
       const userInfo = {
         firstName: firstName,
@@ -30,15 +34,19 @@ const RegisterPage = () => {
       axios
         .post("http://localhost:8080/user/add", userInfo)
         .then((response) => {
-          if (response.data && response.data.message) {
-            setResponseMessage(response.data.message);
+          if (response.status === 200) {
+            setResponseMessage("Registered Successfully.");
           } else {
             setResponseMessage("Unexpected response from the server");
           }
         })
         .catch((error) => {
           console.error("Error: ", error);
-          setResponseMessage(error.response.data);
+          if (error.response.data) {
+            setResponseMessage(error.response.data);
+          } else {
+            setResponseMessage("Unexpected response from the server");
+          }
         });
     }
   };
@@ -47,10 +55,8 @@ const RegisterPage = () => {
     <div className="register-page">
       <div className="register-container">
         <div className="register-form">
-          <div className="back-icon">
-            <Link to="/login">
-              <FaArrowLeft />
-            </Link>
+          <div className="back-icon" onClick={handleBackClick}>
+            <FaArrowLeft />
           </div>
           <h2>Register</h2>
           <form onSubmit={handleRegister}>
@@ -92,7 +98,15 @@ const RegisterPage = () => {
             </div>
             <button type="submit">Register</button>
           </form>
-          {responseMessage && <p>{responseMessage}</p>}
+          {responseMessage && (
+            <p
+              className={
+                responseMessage === "Registered Successfully." ? "success" : "error"
+              }
+            >
+              {responseMessage}
+            </p>
+          )}
         </div>
       </div>
     </div>

@@ -1,16 +1,21 @@
 // LoginPage.js
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import "./LoginPage.css"; // Import the CSS file
 import axios from "axios";
 import { useAuth } from "../UserAuthentication/useAuth";
 import { Navigate } from "react-router-dom";
+import { FaTimes } from "react-icons/fa";
 
-const LoginPage = () => {
+const LoginPage = ({ registerModal, closeLoginModal }) => {
   const { isLoggedIn, setUserSession } = useAuth();
   const [responseMessage, setResponseMessage] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const handleRegister = () =>{
+    registerModal();
+    closeLoginModal();
+  }
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -43,6 +48,7 @@ const LoginPage = () => {
     <div className="login-page">
       <div className="login-container">
         <div className="login-form">
+          <div className="close-icon" onClick={closeLoginModal}><FaTimes /></div>
           <h2>Login</h2>
           <form>
             <div>
@@ -66,10 +72,18 @@ const LoginPage = () => {
             <button onClick={handleLogin}>Login</button>
           </form>
           <div>
-            Don't have an account? <Link to="/register">Register now</Link>
+            Don't have an account? <span onClick={handleRegister}>Register now</span>
           </div>
-          {responseMessage && <p>{responseMessage}</p>}
-          {isLoggedIn ? <Navigate to="/" /> : <Navigate to="/login" />}
+          {responseMessage && (
+            <p
+              className={
+                responseMessage === "Login Success" ? "success" : "error"
+              }
+            >
+              {responseMessage}
+            </p>
+          )}
+          {isLoggedIn ? <Navigate to="/" /> : ""}
         </div>
       </div>
     </div>
