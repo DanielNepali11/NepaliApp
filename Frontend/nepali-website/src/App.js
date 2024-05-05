@@ -5,8 +5,6 @@ import Shop from "./pages/Shop";
 import ShopCategory from "./pages/ShopCategory";
 import Product from "./pages/Product";
 import Cart from "./pages/Cart";
-import LoginPage from "./components/LoginPage/LoginPage";
-import RegisterPage from "./components/RegisterPage/RegisterPage";
 import Navbar from "./components/Navbar/Navbar";
 import { AuthProvider } from "./components/UserAuthentication/useAuth";
 import mens_banner from "./assets/banner_mens.png";
@@ -40,8 +38,6 @@ function App() {
               <Route path=":productId" element={<Product />} />
             </Route>
             <Route exact path="/cart" element={<Cart />} />
-            <Route exact path="/login" element={<LoginPage />} />
-            <Route exact path="/register" element={<RegisterPage />} />
           </Routes>
         </div>
       </Router>

@@ -1,11 +1,13 @@
 .register-page {
-    background-image: url('https://images.pexels.com/photos/1072179/pexels-photo-1072179.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
-    background-size: cover;
-    background-position: center;
-    height: 100vh; /* Set the height of the container to cover the entire viewport */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px);
   }
 
 .register-container {
@@ -17,14 +19,18 @@
   }
   
   .register-form {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 2);
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     width: 300px;
   }
 
-  .register-form p{
+  .success {
+    color: green;
+  }
+  
+  .error {
     color: red;
   }
   
@@ -75,6 +81,7 @@
 
   .back-icon {
     margin-right: 50rem;
+    cursor: pointer;
   }
 
 
